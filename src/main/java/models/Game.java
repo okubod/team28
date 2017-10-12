@@ -50,6 +50,12 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
+		/*
+		if (!columnHasCards(columnFrom){
+			system.out.print("There is no card to move in that column.")
+			return
+		}
+		*/
         //copies card currently at top of the columnFrom column to the columnTo column
 		addCardToCol(columnTo, this.getTopCard(columnFrom));
 		//removes original card that was copied to the new column
