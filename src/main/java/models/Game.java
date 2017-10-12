@@ -50,7 +50,10 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
-        // remove the top card from the columnFrom column, add it to the columnTo column
+        //copies card currently at top of the columnFrom column to the columnTo column
+		addCardToCol(columnTo, this.getTopCard(columnFrom));
+		//removes original card that was copied to the new column
+		removeCardFromCol(columnFrom); 
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
