@@ -51,7 +51,7 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
 		/*
-		if (!columnHasCards(columnFrom){
+		if (!columnHasCards(columnFrom)){
 			system.out.print("There is no card to move in that column.")
 			return
 		}
