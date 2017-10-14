@@ -16,6 +16,10 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
+		for (int i=0; i<4; i++){
+			cols.add(new ArrayList<Card>());
+		}
+		
     }
 
     public void buildDeck() {
@@ -77,7 +81,18 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
-        // remove the top card from the columnFrom column, add it to the columnTo column
+		//check that the original column (columnFrom) is not empty
+		if (columnHasCards(columnFrom)){
+			//copies card currently at top of the columnFrom column to the columnTo column
+			addCardToCol(columnTo, this.getTopCard(columnFrom));
+			//removes original card that was copied to the new column
+			removeCardFromCol(columnFrom); 
+		}
+		else{
+			system.out.print("There is no card to move in that column.");
+		}
+        
+		
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
