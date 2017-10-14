@@ -48,7 +48,7 @@ public class Game {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
         for(int i=0; i < 4; i++){
             cols.get(i).add(deck.get(deck.size()-1));
-            deck.remove(deck.size()-1)
+            deck.remove(deck.size()-1);
         }
     }
 
@@ -56,10 +56,6 @@ public class Game {
        if (columnHasCards(columnNumber) == true) {
                    removeCardFromCol(columnNumber);
                }
-
-
-
-
         //remove the top card from the indicated column
     }
 
