@@ -29,6 +29,19 @@ public class Game {
 
     public void shuffle() {
         // shuffles the deck so that it is random
+        Random rand = new Random();
+        for(int i = 0; i < 10000; i++) {
+            int x = rand.nextInt(52);
+            int y = rand.nextInt(52);
+            if (x==y) continue;
+            Card temp = deck.get(x);
+            deck.set(x, deck.get(y));
+            deck.set(y, temp);
+        }
+        // Checking shuffle
+        // for(int i = 0; i < 52; i++){
+        //    System.out.println(deck.get(i).suit + " " + deck.get(i).value);
+        //}
     }
 
     public void dealFour() {
@@ -36,7 +49,14 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
+       if (columnHasCards(columnNumber) == true) {
+                   removeCardFromCol(columnNumber);
+               }
+
+
+
+
+        //remove the top card from the indicated column
     }
 
     private boolean columnHasCards(int columnNumber) {
