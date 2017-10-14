@@ -36,9 +36,16 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-       if (columnHasCards(columnNumber) == true) {
-                   removeCardFromCol(columnNumber);
-               }
+        if (columnHasCards(columnNumber) == true) {
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber && getTopCard(columnNumber).suit == getTopCard(i).suit && getTopCard(columnNumber).value < getTopCard(i).value) {
+                    removeCardFromCol(columnNumber);
+                }
+            }
+
+
+        }
+    }
 
 
 
