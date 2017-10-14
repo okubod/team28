@@ -30,9 +30,13 @@ public class Game {
     public void shuffle() {
         // shuffles the deck so that it is random
     }
-
+    
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+        for(int i=0; i < 4; i++){
+            cols.get(i).add(deck.get(deck.size()-1));
+            deck.remove(deck.size()-1)
+        }
     }
 
     public void remove(int columnNumber) {
@@ -41,6 +45,9 @@ public class Game {
 
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
+        if(this.cols.get(columnNumber).size() > 0) {
+            return true;
+        }
         return false;
     }
 
