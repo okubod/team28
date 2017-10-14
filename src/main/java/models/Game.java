@@ -50,16 +50,18 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
-		/*
-		if (!columnHasCards(columnFrom)){
-			system.out.print("There is no card to move in that column.")
-			return
+		//check that the original column (columnFrom) is not empty
+		if (columnHasCards(columnFrom)){
+			//copies card currently at top of the columnFrom column to the columnTo column
+			addCardToCol(columnTo, this.getTopCard(columnFrom));
+			//removes original card that was copied to the new column
+			removeCardFromCol(columnFrom); 
 		}
-		*/
-        //copies card currently at top of the columnFrom column to the columnTo column
-		addCardToCol(columnTo, this.getTopCard(columnFrom));
-		//removes original card that was copied to the new column
-		removeCardFromCol(columnFrom); 
+		else{
+			system.out.print("There is no card to move in that column.");
+		}
+        
+		
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
