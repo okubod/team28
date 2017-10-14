@@ -65,7 +65,7 @@ public class Game {
 
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        if(this.cols.get(columnNumber).size() > 0) {
+        if(cols.get(columnNumber).size() > 0) {
             return true;
         }
         return false;
@@ -78,14 +78,14 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
 		//check that the original column (columnFrom) is not empty
-		if (columnHasCards(columnFrom)){
+		if (columnHasCards(columnTo)==false){
 			//copies card currently at top of the columnFrom column to the columnTo column
 			addCardToCol(columnTo, this.getTopCard(columnFrom));
 			//removes original card that was copied to the new column
 			removeCardFromCol(columnFrom); 
 		}
 		else{
-			system.out.print("There is no card to move in that column.");
+			System.out.println("There is no card to move in that column.");
 		}
         
 		
