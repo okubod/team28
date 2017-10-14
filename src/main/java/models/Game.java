@@ -33,6 +33,7 @@ public class Game {
         for(int i = 0; i < 10000; i++) {
             int x = rand.nextInt(52);
             int y = rand.nextInt(52);
+            if (x==y) continue;
             Card temp = deck.get(x);
             deck.set(x, deck.get(y));
             deck.set(y, temp);
