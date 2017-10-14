@@ -49,7 +49,14 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
+       if (columnHasCards(columnNumber) == true) {
+                   removeCardFromCol(columnNumber);
+               }
+
+
+
+
+        //remove the top card from the indicated column
     }
 
     private boolean columnHasCards(int columnNumber) {
