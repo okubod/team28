@@ -146,14 +146,17 @@ $.ajax({
 function removeCard(colNumber){
 
 $.ajax({
-type: "POST",
-url: "/removeCard/"+colNumber,
-data: JSON.stringify(game),
-success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-game = data;
-display(data);},
-contentType:"application/json; charset=utf-8",
-dataType:"json",
+    type: "POST",
+    url: "/removeCard/"+colNumber,
+    data: JSON.stringify(game),
+    success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+    error: function(xhr, thrownError){
+        alert(thrownError + ": Invalid remove!");
+    },
+    contentType:"application/json; charset=utf-8",
+    dataType:"json",
 });
 
 }
