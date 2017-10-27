@@ -1,5 +1,7 @@
 package models;
 
+import org.omg.CORBA.portable.ApplicationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -75,6 +77,9 @@ public class Game {
             }
             if (removeCard) {
                 this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+            }
+            else {
+                throw new Error("Invalid remove");
             }
         }
     }
