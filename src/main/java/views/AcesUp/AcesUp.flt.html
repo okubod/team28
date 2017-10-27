@@ -14,7 +14,7 @@
     </tr>
 
     <tr><td class="columnOfCards" id="c0">
-        <table>
+        <table id="col0">
             <tr><td class="cardLocation l0"></td></tr>
             <tr><td class="cardLocation l1"></td></tr>
             <tr><td class="cardLocation l2"></td></tr>
@@ -32,7 +32,7 @@
         </table>
     </td>
         <td class="columnOfCards" id="c1">
-            <table>
+            <table id= "col1">
                 <tr><td class="cardLocation l0"></td></tr>
                 <tr><td class="cardLocation l1"></td></tr>
                 <tr><td class="cardLocation l2"></td></tr>
@@ -50,7 +50,7 @@
             </table>
         </td>
         <td class="columnOfCards" id="c2">
-            <table>
+            <table id="col2">
                 <tr><td class="cardLocation l0"></td></tr>
                 <tr><td class="cardLocation l1"></td></tr>
                 <tr><td class="cardLocation l2"></td></tr>
@@ -68,7 +68,7 @@
             </table>
         </td>
         <td class="columnOfCards" id="c3">
-            <table>
+            <table id="col3">
                 <tr><td class="cardLocation l0"></td></tr>
                 <tr><td class="cardLocation l1"></td></tr>
                 <tr><td class="cardLocation l2"></td></tr>
@@ -96,6 +96,7 @@
 <script>
 
 var game;
+
 
 function display(game) {
 console.log(game);
@@ -157,19 +158,20 @@ dataType:"json",
 
 }
 
-
-$("#c0").click(function(){
+$("#col0").click(function(){
     removeCard(0);
 });
-$("#c1").click(function(){
+$("#col1").click(function(){
     removeCard(1);
 });
-$("#c2").click(function(){
+$("#col2").click(function(){
     removeCard(2);
 });
-$("#c3").click(function(){
+$("#col3").click(function(){
     removeCard(3);
 });
+
+
 
 
 $("#moveButton").click(function(){
