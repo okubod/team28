@@ -26,7 +26,8 @@ public class Deck {
 
     public Card draw() {
         if (theDeck.size() == 0) {
-            //this is game end
+            //if this is true then game should end
+            throw new EmptyStackException();
         }
         else{
             Card temp = theDeck.remove(theDeck.size() - 1);

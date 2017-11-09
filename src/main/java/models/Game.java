@@ -14,14 +14,14 @@ import java.util.Random;
  */
 public class Game {
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
     public Deck deck;
+    public java.util.List<Column> cols = new ArrayList<>();
 
     public Game(){
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
+        for (int i = 0; i < 4; i++){
+            cols.add(new Column());
+        }
+        deck = new Deck();
     }
 
     public void resetDeck() {
@@ -33,8 +33,14 @@ public class Game {
     }
 
     public void dealFour() {
-        for(int i = 0; i < 4; i++) {
+        try {
+            for (int i = 0; i < 4; i++) {
                 cols.get(i).add(deck.draw());
+            }
+        }
+        catch (EmptyStackException e){
+            //call end game function
+            System.out.println("Out of cards");
         }
     }
 
@@ -53,39 +59,7 @@ public class Game {
     */
 
     public void remove(int columnNumber) {
-        if(columnHasCards(columnNumber)) {
-            Card c = getTopCard(columnNumber);
-            boolean removeCard = false;
-            for (int i = 0; i < 4; i++) {
-                if (i != columnNumber) {
-                    if (columnHasCards(i)) {
-                        Card compare = getTopCard(i);
-                        if (compare.getSuit() == c.getSuit()) {
-                            if (compare.getValue() > c.getValue()) {
-                                removeCard = true;
-                            }
-                        }
-                    }
-                }
-            }
-            if (removeCard) {
-                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-            }
-            else {
-                throw new Error("Invalid remove");
-            }
-        }
-    }
-
-    private boolean columnHasCards(int columnNumber) {
-        if(this.cols.get(columnNumber).size()>0){
-            return true;
-        }
-        return false;
-    }
-
-    private Card getTopCard(int columnNumber) {
-        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
+        //call column remove
     }
 
 
