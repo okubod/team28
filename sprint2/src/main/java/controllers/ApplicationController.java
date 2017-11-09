@@ -41,14 +41,6 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-    /**public Result resetPost(Context context, Game g) {
-        if(context.getRequestPath().contains("reset")){
-            g.gameGet();
-        }
-        return Results.json().render(g);
-
-    } */
-
     public Result dealPost(Context context, Game g) {
         if(context.getRequestPath().contains("deal")){
             g.dealFour();
