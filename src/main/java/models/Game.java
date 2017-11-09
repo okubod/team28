@@ -1,9 +1,9 @@
 package models;
 
-import org.omg.CORBA.portable.ApplicationException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EmptyStackException;
 import java.util.Random;
 
 /**
@@ -14,10 +14,8 @@ import java.util.Random;
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
-
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
-
+    public Deck deck;
 
     public Game(){
         cols.add(new ArrayList<Card>());
@@ -26,27 +24,21 @@ public class Game {
         cols.add(new ArrayList<Card>());
     }
 
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
+    public void resetDeck() {
+        deck.buildDeck();
     }
 
     public void shuffle() {
-        long seed = System.nanoTime();
-        Collections.shuffle(deck, new Random(seed));
+        deck.shuffle();
     }
 
     public void dealFour() {
-        for(int i = 0; i < 4; i++){
-            cols.get(i).add(deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+        for(int i = 0; i < 4; i++) {
+                cols.get(i).add(deck.draw());
         }
     }
 
+    /*
     //customDeal to setup game for testing purposes
     public void customDeal(int c1, int c2, int c3, int c4) {
         cols.get(0).add(deck.get(c1));
@@ -58,6 +50,7 @@ public class Game {
         cols.get(3).add(deck.get(c4));
         deck.remove(c4);
     }
+    */
 
     public void remove(int columnNumber) {
         if(columnHasCards(columnNumber)) {
