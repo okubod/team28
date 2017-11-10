@@ -13,6 +13,8 @@
         <td >Column 3</td>
     </tr>
 
+    <h3 class="Score"></h3>
+
     <tr><td class="columnOfCards" id="c0">
         <table id="col0">
             <tr><td class="cardLocation l0"></td></tr>
@@ -103,6 +105,11 @@ function display(game) {
 
 console.log(game);
 
+ $( '.Score' ).html("Score: " + game.score);
+        $.each(game.cols[1], function( key, val ) {
+            $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0].cards, function( key, val ) {
@@ -164,7 +171,6 @@ $( '.columnOfCards .cardLocation' ).html("");
 			$( '#c3 .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
 		}
     });
-
 
 
 }
