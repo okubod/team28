@@ -14,8 +14,11 @@ import java.util.Random;
  */
 public class Game {
 
+    public int score = 0;
+
     public Deck deck;
     public java.util.List<Column> cols = new ArrayList<>();
+
 
     public Game(){
         for (int i = 0; i < 4; i++){
@@ -29,7 +32,9 @@ public class Game {
     }
 
     public void shuffle() {
+
         deck.shuffle();
+
     }
 
     public void dealFour() {
@@ -76,12 +81,17 @@ public class Game {
                 }
             }
             if (removeCard) {
+
+                score = score + 1;
+
                 this.cols.get(columnNumber).removeCardFromCol();
+
             }
             else {
                 throw new Error("Invalid remove");
             }
         }
+        System.out.println("Score : " + score);
     }
 
     public void move(int columnFrom, int columnTo) {
