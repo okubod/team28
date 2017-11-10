@@ -85,9 +85,13 @@ public class Game {
     }
 
     public void move(int columnFrom, int columnTo) {
-        Card cardToMove = cols.get(columnFrom).readTopCard();
-        cols.get(columnFrom).removeCardFromCol();
-        cols.get(columnTo).addCardToCol(cardToMove);
+        if(cols.get(columnTo).columnHasCards() == false) {
+            Card cardToMove = cols.get(columnFrom).readTopCard();
+            if(cardToMove.getValue() == 14) {
+                cols.get(columnFrom).removeCardFromCol();
+                cols.get(columnTo).addCardToCol(cardToMove);
+            }
+        }
     }
 
 }
