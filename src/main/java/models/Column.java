@@ -13,7 +13,7 @@ public class Column {
         return false;
     }
 
-    public Card getTopCard() {
+    public Card readTopCard() {
         return this.cards.get(this.cards.size()-1);
     }
 

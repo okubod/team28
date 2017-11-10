@@ -59,13 +59,14 @@ public class Game {
     */
 
     public void remove(int columnNumber) {
+        System.out.println(columnNumber);
         if(cols.get(columnNumber).columnHasCards()) {
-            Card c = cols.get(columnNumber).getTopCard();
+            Card c = cols.get(columnNumber).readTopCard();
             boolean removeCard = false;
             for (int i = 0; i < 4; i++) {
                 if (i != columnNumber) {
                     if (cols.get(i).columnHasCards()) {
-                        Card compare = cols.get(i).getTopCard();
+                        Card compare = cols.get(i).readTopCard();
                         if (compare.getSuit() == c.getSuit()) {
                             if (compare.getValue() > c.getValue()) {
                                 removeCard = true;
@@ -84,7 +85,7 @@ public class Game {
     }
 
     public void move(int columnFrom, int columnTo) {
-        Card cardToMove = cols.get(columnFrom).getTopCard();
+        Card cardToMove = cols.get(columnFrom).readTopCard();
         cols.get(columnFrom).removeCardFromCol();
         cols.get(columnTo).addCardToCol(cardToMove);
     }
