@@ -14,10 +14,6 @@ import java.util.Random;
  */
 public class Game {
 
-    /*public java.util.List<Card> deck = new ArrayList<>();
-
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>();*/
-
     public int score = 0;
 
     public Deck deck;
@@ -36,10 +32,6 @@ public class Game {
     }
 
     public void shuffle() {
-
-        /*long seed = System.nanoTime();
-        Collections.shuffle(deck, new Random(seed));
-        System.out.println("Score : " + score);*/
 
         deck.shuffle();
 
@@ -90,7 +82,6 @@ public class Game {
             }
             if (removeCard) {
 
-                /*this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);*/
                 score = score + 1;
 
                 this.cols.get(columnNumber).removeCardFromCol();
