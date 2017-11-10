@@ -18,6 +18,7 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
 
+    public int score = 0;
 
     public Game(){
         cols.add(new ArrayList<Card>());
@@ -38,6 +39,7 @@ public class Game {
     public void shuffle() {
         long seed = System.nanoTime();
         Collections.shuffle(deck, new Random(seed));
+        System.out.println("Score : " + score);
     }
 
     public void dealFour() {
@@ -77,11 +79,13 @@ public class Game {
             }
             if (removeCard) {
                 this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+                score = score + 1;
             }
             else {
                 throw new Error("Invalid remove");
             }
         }
+        System.out.println("Score : " + score);
     }
 
     private boolean columnHasCards(int columnNumber) {
