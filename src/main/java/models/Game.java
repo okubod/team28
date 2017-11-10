@@ -35,7 +35,7 @@ public class Game {
     public void dealFour() {
         try {
             for (int i = 0; i < 4; i++) {
-                cols.get(i).add(deck.draw());
+                cols.get(i).addCardToCol(deck.draw());
             }
         }
         catch (EmptyStackException e){
@@ -44,7 +44,7 @@ public class Game {
         }
     }
 
-    /*
+    /*Commented out as okay'd by Dr. Sarma
     //customDeal to setup game for testing purposes
     public void customDeal(int c1, int c2, int c3, int c4) {
         cols.get(0).add(deck.get(c1));
@@ -59,21 +59,34 @@ public class Game {
     */
 
     public void remove(int columnNumber) {
-        //call column remove
+        if(cols.get(columnNumber).columnHasCards()) {
+            Card c = cols.get(columnNumber).getTopCard();
+            boolean removeCard = false;
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber) {
+                    if (cols.get(i).columnHasCards()) {
+                        Card compare = cols.get(i).getTopCard();
+                        if (compare.getSuit() == c.getSuit()) {
+                            if (compare.getValue() > c.getValue()) {
+                                removeCard = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (removeCard) {
+                this.cols.get(columnNumber).removeCardFromCol();
+            }
+            else {
+                throw new Error("Invalid remove");
+            }
+        }
     }
-
 
     public void move(int columnFrom, int columnTo) {
-        Card cardToMove = getTopCard(columnFrom);
-        this.removeCardFromCol(columnFrom);
-        this.addCardToCol(columnTo,cardToMove);
+        Card cardToMove = cols.get(columnFrom).getTopCard();
+        cols.get(columnFrom).removeCardFromCol();
+        cols.get(columnTo).addCardToCol(cardToMove);
     }
 
-    private void addCardToCol(int columnTo, Card cardToMove) {
-        cols.get(columnTo).add(cardToMove);
-    }
-
-    private void removeCardFromCol(int colFrom) {
-        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
-    }
 }
