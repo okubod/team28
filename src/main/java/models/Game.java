@@ -44,8 +44,15 @@ public class Game {
             }
         }
         catch (EmptyStackException e){
-            //call end game function
-            System.out.println("Out of cards");
+			if(check_end()==true){
+				System.out.println("User Wins");
+				throw new Error();
+			}
+			else{
+				System.out.println("Deck Empty");
+				throw new Error();
+			}
+			
         }
     }
 
@@ -103,5 +110,24 @@ public class Game {
             }
         }
     }
+	
+	public boolean check_end(){
+		int aceCount = 0;
+		if(score == 48){
+			for(int i=0;i<4;i++){
+				if(cols.get(i).columnHasCards() == true){
+					if(cols.get(i).readTopCard().getValue() == 14){
+						aceCount++;
+					}
+				}	
+			}
+		}
+		if(aceCount == 4){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 }

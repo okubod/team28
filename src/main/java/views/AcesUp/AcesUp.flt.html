@@ -189,6 +189,9 @@ $.ajax({
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
         display(data);},
+  error: function(xhr, thrownError){
+		alert("Out of Cards");
+	},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
