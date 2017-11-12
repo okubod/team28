@@ -182,15 +182,28 @@ game = data;
 
 
 $("#dealButton").click(function(){
+if(game.gameOver){
+    alert("Game has ended. Please click reset.");
+    return;
+}
 $.ajax({
   type: "POST",
   url: "/dealGame",
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
-        display(data);},
+        display(data);
+        if(game.gameOver)
+        {
+            if(game.victory)
+                alert("Game Over: Player has won! Please press reset to play again.");
+            else
+                alert("Game Over: Player has lost... Please press reset to try again.");
+        }
+
+        },
   error: function(xhr, thrownError){
-		alert("Out of Cards");
+
 	},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
@@ -199,7 +212,11 @@ $.ajax({
 
 
 function removeCard(colNumber){
-
+if(game.gameOver)
+{
+    alert("Game has ended. Please click reset.");
+    return;
+}
 $.ajax({
     type: "POST",
     url: "/removeCard/"+colNumber,
@@ -233,6 +250,11 @@ $("#col3").click(function(){
 
 
 $("#moveButton").click(function(){
+if(game.gameOver)
+{
+    alert("Game has ended. Please click reset.");
+    return;
+}
 var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
 $.ajax({

@@ -15,7 +15,8 @@ import java.util.Random;
 public class Game {
 
     public int score = 0;
-
+    public boolean gameOver = false;
+    public boolean victory = false;
     public Deck deck;
     public java.util.List<Column> cols = new ArrayList<>();
 
@@ -44,14 +45,8 @@ public class Game {
             }
         }
         catch (EmptyStackException e){
-			if(check_end()==true){
-				System.out.println("User Wins");
-				throw new Error();
-			}
-			else{
-				System.out.println("Deck Empty");
-				throw new Error();
-			}
+			gameOver = true;
+			victory = check_end();
 			
         }
     }
@@ -71,7 +66,7 @@ public class Game {
     */
 
     public void remove(int columnNumber) {
-        System.out.println(columnNumber);
+        //System.out.println(columnNumber);
         if(cols.get(columnNumber).columnHasCards()) {
             Card c = cols.get(columnNumber).readTopCard();
             boolean removeCard = false;
@@ -98,7 +93,7 @@ public class Game {
                 throw new Error("Invalid remove");
             }
         }
-        System.out.println("Score : " + score);
+        //System.out.println("Score : " + score);
     }
 
     public void move(int columnFrom, int columnTo) {
