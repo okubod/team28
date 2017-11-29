@@ -117,7 +117,6 @@ $( '.columnOfCards .cardLocation' ).html("");
 
     for (var i = 0; i < 4; i++){
         $.each(game.cols[i].cards, function( key, val ) {
-            val.suit = "Bastos";
             if(val.suit == "Hearts"){
                 $( '#c' + i + ' .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
             }
@@ -266,10 +265,10 @@ game = data;
 });
 
 $("#spanishButton").click(function(){
-/**$.getJSON("http://localhost:8080/game", function( data ) {
+$.getJSON("http://localhost:8080/game_Spanish", function( data ) {
 display(data);
 game = data;
-});*/
+});
 });
 
 </script>

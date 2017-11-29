@@ -19,13 +19,23 @@ public class Game {
     public boolean victory = false;
     public Deck deck;
     public java.util.List<Column> cols = new ArrayList<>();
+    GameType gameMode;
 
+    public Game() {
+    }
 
-    public Game(){
+    public Game(GameType mode){
         for (int i = 0; i < 4; i++){
             cols.add(new Column());
         }
-        deck = new Deck();
+        if(mode == GameType.Standard){
+            deck = new Deck();
+        }
+        else if(mode == GameType.Spanish){
+            deck = new SpanishDeck();
+        }
+
+        gameMode = mode;
     }
 
     public void resetDeck() {
