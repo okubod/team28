@@ -112,68 +112,41 @@ console.log(game);
             $( '#c1 .l'+key ).html(val.value + val.suit);
     });
 
+
 $( '.columnOfCards .cardLocation' ).html("");
 
-    $.each(game.cols[0].cards, function( key, val ) {
-		if(val.suit == "Hearts"){
-			$( '#c0 .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
-		}
-		else if(val.suit == "Diamonds"){
-			$( '#c0 .l'+key ).html(val.value + " \u2666").attr('style', 'color: red');
-		}
-		else if(val.suit == "Spades"){
-			$( '#c0 .l'+key ).html(val.value + " \u2660").attr('style', 'color:black');
-		}
-		else if(val.suit == "Clubs"){
-			$( '#c0 .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
-		}
-    });
+    for (var i = 0; i < 4; i++){
+        $.each(game.cols[i].cards, function( key, val ) {
+            if(val.suit == "Hearts"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
+            }
+            else if(val.suit == "Diamonds"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2666").attr('style', 'color: red');
+            }
+            else if(val.suit == "Spades"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2660").attr('style', 'color:black');
+            }
+            else if(val.suit == "Clubs"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
+            }
+            else if(val.suit == "Bastos"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
+            }
+            else if(val.suit == "Oros"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2609").attr('style', 'color:black');
+            }
+            else if(val.suit == "Copas"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \uD83C\uDFC6").attr('style', 'color:black');
+            }
+            else if(val.suit == "Espadas"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u2694").attr('style', 'color:black');
+            }
+            else if(val.suit == "Joker"){
+                $( '#c' + i + ' .l'+key ).html(val.value + " \u265B").attr('style', 'color:black');
+            }
 
- $.each(game.cols[1].cards, function( key, val ) {
-        if(val.suit == "Hearts"){
-			$( '#c1 .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
-		}
-		else if(val.suit == "Diamonds"){
-			$( '#c1 .l'+key ).html(val.value + " \u2666").attr('style', 'color: red');
-		}
-		else if(val.suit == "Spades"){
-			$( '#c1 .l'+key ).html(val.value + " \u2660").attr('style', 'color:black');
-		}
-		else if(val.suit == "Clubs"){
-			$( '#c1 .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
-		}
-    });
-
- $.each(game.cols[2].cards, function( key, val ) {
-        if(val.suit == "Hearts"){
-			$( '#c2 .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
-		}
-		else if(val.suit == "Diamonds"){
-			$( '#c2 .l'+key ).html(val.value + " \u2666").attr('style', 'color: red');
-		}
-		else if(val.suit == "Spades"){
-			$( '#c2 .l'+key ).html(val.value + " \u2660").attr('style', 'color:black');
-		}
-		else if(val.suit == "Clubs"){
-			$( '#c2 .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
-		}
-    });
-
- $.each(game.cols[3].cards, function( key, val ) {
-        if(val.suit == "Hearts"){
-			$( '#c3 .l'+key ).html(val.value + " \u2665").attr('style', 'color: red');
-		}
-		else if(val.suit == "Diamonds"){
-			$( '#c3 .l'+key ).html(val.value + " \u2666").attr('style', 'color: red');
-		}
-		else if(val.suit == "Spades"){
-			$( '#c3 .l'+key ).html(val.value + " \u2660").attr('style', 'color:black');
-		}
-		else if(val.suit == "Clubs"){
-			$( '#c3 .l'+key ).html(val.value + " \u2663").attr('style', 'color:black');
-		}
-    });
-
+        });
+    }
 
 }
 
@@ -292,10 +265,10 @@ game = data;
 });
 
 $("#spanishButton").click(function(){
-/**$.getJSON("http://localhost:8080/game", function( data ) {
+$.getJSON("http://localhost:8080/game_Spanish", function( data ) {
 display(data);
 game = data;
-});*/
+});
 });
 
 </script>
