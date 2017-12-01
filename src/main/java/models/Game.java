@@ -127,7 +127,7 @@ public class Game {
 				}	
 			}
 		}
-		if(gameMode == GameType.Spanish && score == 48){
+		if(gameMode == GameType.Spanish && score == 46){
 			for(int i=0;i<4;i++){
 				if(cols.get(i).columnHasCards() == true){
 					if(cols.get(i).readTopCard().getValue() == 14){
