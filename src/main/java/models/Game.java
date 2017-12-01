@@ -84,14 +84,14 @@ public class Game {
                 if (i != columnNumber) {
                     if (cols.get(i).columnHasCards()) {
                         Card compare = cols.get(i).readTopCard();
-                        if (compare.getSuit() == c.getSuit() || compare.getSuit() == Suit.Joker) {
+                        if (compare.getSuit() == c.getSuit()) {
                             if (compare.getValue() > c.getValue()) {
                                 removeCard = true;
-                                if(compare.getValue() == 15){
-                                    cols.get(i).removeCardFromCol();
-                                    score = score + 1;
-                                }
-
+                            }
+                        }
+                        else if(compare.getSuit() == Suit.Joker){
+                            if(c.getSuit() != Suit.Joker && c.getValue() != 14){
+                                removeCard = true;
                             }
                         }
                     }
