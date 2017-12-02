@@ -50,17 +50,23 @@ public class Game {
 
     public void dealFour() {
         try {
-            for (int i = 0; i < 4; i++) {
-                cols.get(i).addCardToCol(deck.draw());
+            if(deck.theDeck.size() >= 4) {
+                for (int i = 0; i < 4; i++) {
+                    cols.get(i).addCardToCol(deck.draw());
+                }
+            }
+            else if (deck.theDeck.size() == 2){
+                for(int i = 0; i < 2; i++){
+                    cols.get(i).addCardToCol(deck.draw());
+                }
             }
         }
         catch (EmptyStackException e){
-			gameOver = true;
-			victory = check_end();
-			
+            gameOver = true;
+            victory = check_end();
         }
-    }
 
+    }
     /*Commented out as okay'd by Dr. Sarma
     //customDeal to setup game for testing purposes
     public void customDeal(int c1, int c2, int c3, int c4) {
