@@ -92,6 +92,7 @@ public class Game {
                         else if(compare.getSuit() == Suit.Joker){
                             if(c.getSuit() != Suit.Joker && c.getValue() != 14){
                                 removeCard = true;
+                                cols.get(i).removeCardFromCol();
                             }
                         }
                     }
