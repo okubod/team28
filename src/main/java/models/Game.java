@@ -98,6 +98,23 @@ public class Game {
                     }
                 }
             }
+            if (!removeCard){
+                for(int i = 0; i < 4; i++){
+                    if(i != columnNumber){
+                        if(cols.get(i).columnHasCards()){
+                           Card compare = cols.get(i).readTopCard();
+                           if(c.getValue() != 14 && c.getValue() != 15){
+                               if(compare.getSuit() == Suit.Joker) {
+                                   removeCard = true;
+                                   cols.get(i).removeCardFromCol();
+                                   score = score + 1;
+                               }
+                           }
+                        }
+                    }
+                }
+            }
+
             if (removeCard) {
 
                 score = score + 1;
@@ -105,6 +122,7 @@ public class Game {
                 this.cols.get(columnNumber).removeCardFromCol();
 
             }
+
             else {
                 throw new Error("Invalid remove");
             }
