@@ -110,7 +110,15 @@ public class testGame {
         Game g = new Game(GameType.Spanish);
         g.resetDeck();
         assertFalse(g.check_end());
-        g.dealFour();
+        //g.dealFour();
+		Card c0 = new Card(14, Suit.Espadas);
+		Card c1 = new Card(14, Suit.Copas);
+		Card c2 = new Card(14, Suit.Oros);
+		Card c3 = new Card(14, Suit.Bastos);
+        g.cols.get(0).addCardToCol(c0);
+        g.cols.get(1).addCardToCol(c1);
+        g.cols.get(2).addCardToCol(c2);
+        g.cols.get(3).addCardToCol(c3);
         assertEquals("14Espadas", g.cols.get(0).readTopCard().toString());
         assertEquals("14Copas", g.cols.get(1).readTopCard().toString());
         assertEquals("14Oros", g.cols.get(2).readTopCard().toString());
