@@ -118,7 +118,16 @@ public class Game {
 	
 	public boolean check_end(){
 		int aceCount = 0;
-		if(score == 48){
+		if(gameMode == GameType.Standard && score == 48){
+			for(int i=0;i<4;i++){
+				if(cols.get(i).columnHasCards() == true){
+					if(cols.get(i).readTopCard().getValue() == 14){
+						aceCount++;
+					}
+				}	
+			}
+		}
+		if(gameMode == GameType.Spanish && score == 46){
 			for(int i=0;i<4;i++){
 				if(cols.get(i).columnHasCards() == true){
 					if(cols.get(i).readTopCard().getValue() == 14){
