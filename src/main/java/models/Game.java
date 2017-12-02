@@ -60,6 +60,9 @@ public class Game {
                     cols.get(i).addCardToCol(deck.draw());
                 }
             }
+            else {
+                throw new EmptyStackException();
+            }
         }
         catch (EmptyStackException e){
             gameOver = true;

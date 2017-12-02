@@ -42,6 +42,19 @@ public class testGame {
     }
 
     @Test
+    public void testGameSpanishDealEmpty() {
+        Game g = new Game(GameType.Spanish);
+        g.resetDeck();
+        g.shuffle();
+        for(int i = 0; i < 13; i++){
+            g.dealFour();
+        }
+        assertEquals(0, g.deck.theDeck.size());
+        g.dealFour();
+        assertTrue(g.gameOver);
+    }
+
+    @Test
     public void testGameRemove(){
         Game g = new Game(GameType.Standard);
         g.resetDeck();
