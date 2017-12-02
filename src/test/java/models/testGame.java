@@ -70,6 +70,34 @@ public class testGame {
     }
 
     @Test
+    public void testSpanishRemove(){
+        Game g = new Game(GameType.Spanish);
+        g.resetDeck();
+        g.dealFour();
+        assertEquals("15Joker", g.cols.get(0).readTopCard().toString());
+        boolean removeFailed = false;
+        try{
+            g.remove(0);
+        }
+        catch(Error e){
+            removeFailed = true;
+        }
+        assertTrue(removeFailed);
+        Card c = new Card(5, Suit.Oros);
+        g.cols.get(1).addCardToCol(c);
+        assertEquals("5Oros",g.cols.get(1).readTopCard().toString());
+        boolean removePassed = false;
+        try {
+            g.remove(1);
+            removePassed = true;
+        }
+        catch(Error e){
+            removePassed = false;
+        }
+        assertTrue(removePassed);
+    }
+
+    @Test
     public void testGameMoveSuccess() {
         Game g = new Game(GameType.Standard);
         //Test for working case
