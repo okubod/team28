@@ -83,9 +83,9 @@ public class testGame {
             removeFailed = true;
         }
         assertTrue(removeFailed);
-        Card c = new Card(5, Suit.Oros);
+        Card c = new Card(3, Suit.Espadas);
         g.cols.get(1).addCardToCol(c);
-        assertEquals("5Oros",g.cols.get(1).readTopCard().toString());
+        assertEquals("3Espadas",g.cols.get(1).readTopCard().toString());
         boolean removePassed = false;
         try {
             g.remove(1);
